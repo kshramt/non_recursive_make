@@ -1,6 +1,6 @@
-all: $(dir)/tmp.dat
+all: $(d)/tmp.dat
 
-$(dir)/tmp.dat:
+$(d)/tmp.dat:
 	touch $@
 
 $(call add,lib)

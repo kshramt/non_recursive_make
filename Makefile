@@ -1,14 +1,14 @@
 rest = $(wordlist 2, $(words $(1)), $(1))
 
 define include_template =
-dirs := $$(firstword $$(dirs))/$(1) $$(dirs)
-dir := $$(firstword $$(dirs))
-include $$(firstword $$(dirs))/main.mk
-dirs := $$(call rest, $$(dirs))
+__dir_stack__ := $$(firstword $$(__dir_stack__))/$(1) $$(__dir_stack__)
+d := $$(firstword $$(__dir_stack__))
+include $$(firstword $$(__dir_stack__))/main.mk
+__dir_stack__ := $$(call rest, $$(__dir_stack__))
 endef
 
 add = $(eval $(call include_template,$(1)))
 
-dirs := .
-dir := $(firstword $(dirs))
-include $(dir)/main.mk
+__dir_stack__ := .
+d := $(firstword $(__dir_stack__))
+include $(d)/main.mk
