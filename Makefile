@@ -1,3 +1,5 @@
+# GNU Make (> 3.82) is required
+
 rest = $(wordlist 2, $(words $(1)), $(1))
 
 define include_template =
