@@ -1,14 +1,14 @@
-chop = $(shell echo $(1) | ruby -e 'puts $$stdin.gets.split[0..-2].join(" ")')
+rest = $(wordlist 2, $(words $(1)), $(1))
 
 define include_template =
-dirs += $$(lastword $$(dirs))/$(1)
-dir := $$(lastword $$(dirs))
-include $$(lastword $$(dirs))/main.mk
-dirs := $$(call chop,$$(dirs))
+dirs := $$(firstword $$(dirs))/$(1) $$(dirs)
+dir := $$(firstword $$(dirs))
+include $$(firstword $$(dirs))/main.mk
+dirs := $$(call rest, $$(dirs))
 endef
 
 add = $(eval $(call include_template,$(1)))
 
 dirs := .
-dir := $(lastword $(dirs))
+dir := $(firstword $(dirs))
 include $(dir)/main.mk
