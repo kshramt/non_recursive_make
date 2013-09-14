@@ -22,6 +22,11 @@ endef
 
 add = $(eval $(call include_template,$(1)))
 
+# Tasks
+.PHONY: all
+
+all:
+
 # Main
 __dir_stack__ := .
 d := $(firstword $(__dir_stack__))
