@@ -17,7 +17,7 @@ define include_template =
 __dir_stack__ := $$(firstword $$(__dir_stack__))/$(1) $$(__dir_stack__)
 d := $$(firstword $$(__dir_stack__))
 include $$(firstword $$(__dir_stack__))/main.mk
-__dir_stack__ := $$(call rest, $$(__dir_stack__))
+__dir_stack__ := $$(call rest,$$(__dir_stack__))
 endef
 
 add = $(eval $(call include_template,$(1)))
