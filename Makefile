@@ -1,4 +1,4 @@
-# GNU Make (> 3.82) is required
+# GNU Make (>= 3.82) is required
 
 # Configurations
 .SUFFIXES:
@@ -6,9 +6,6 @@
 .ONESHELL:
 export SHELL := /bin/bash
 export SHELLOPTS := pipefail:errexit:nounset:noclobber
-
-# Tasks
-.PHONY: all
 
 # Functions
 rest = $(wordlist 2, $(words $(1)), $(1))
