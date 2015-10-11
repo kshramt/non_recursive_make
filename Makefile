@@ -14,8 +14,8 @@ export SHELLOPTS := pipefail:errexit:nounset:noclobber
 rest = $(wordlist 2, $(words $(1)), $(1))
 
 define include_template =
-__dir_stack__ := $$(firstword $$(__dir_stack__))/$(1) $$(__dir_stack__)
-d := $$(firstword $$(__dir_stack__))
+d := $$(firstword $$(__dir_stack__))/$(1)
+__dir_stack__ := $$(d) $$(__dir_stack__)
 include $$(d)/main.mk
 __dir_stack__ := $$(call rest,$$(__dir_stack__))
 endef
