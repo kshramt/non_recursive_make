@@ -28,6 +28,6 @@ add = $(eval $(call include_template,$(1)))
 all:
 
 # Main
-__dir_stack__ := .
+__dir_stack__ := $(CURDIR)
 d := $(firstword $(__dir_stack__))
 include $(d)/main.mk
